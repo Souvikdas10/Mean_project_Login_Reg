@@ -20,6 +20,14 @@ export class LoginComponent implements OnInit {
     })
 
   }
+
+  visible: boolean = true;
+  changetype: boolean = true;
+  viewpass() {
+    this.visible = !this.visible
+    this.changetype = !this.changetype
+  }
+
   submitData() {
     // alert("Login successfully")
     console.log("User Login Successfull:", this.loginvalue.value);

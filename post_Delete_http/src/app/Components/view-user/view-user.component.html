@@ -8,7 +8,7 @@
                 <th class="table-info">Name</th>
                 <th class="table-warning">Email</th>
                 <th class="table-danger">Phone</th>
-                <th class="table-success">Passwoard</th>
+                <!-- <th class="table-success">Passwoard</th> -->
                 <th class="table-danger">Date</th>
                 <th class="table-primary">Action</th>
             </tr>
@@ -22,7 +22,7 @@
                     <td class="table-success">{{i.email}}</td>
                     <td class="table-warning">{{i.phone}}</td>
                     <!-- <td class="table-secondary">*****{{i.password.toString().slice(58,60)}}</td> -->
-                    <td class="table-secondary">{{i.password}} </td>
+                    <!-- <td class="table-secondary">{{i.password}} </td> -->
                     <td class="table-warning">{{oldDate | date:'dd/MM/yyyy'}}</td>
                     <td class="table-info"><button (click)="deleteUser(i._id)">Delete</button></td>
                 </tr>

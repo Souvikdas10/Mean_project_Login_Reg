@@ -108,7 +108,7 @@ const getemp = async (req, res) => {
         res.status(200).json({ success: true, msg: "fetch data", data: alldata })
     }
     catch (ex) {
-        res.status(404).json({ success: false, msg: "Data not found" })
+        res.status(201).json({ success: false, msg: "Data not found" })
     }
 }
 
