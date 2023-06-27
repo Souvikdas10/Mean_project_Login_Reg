@@ -24,11 +24,15 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputName1" class="form-label">Password</label>
-            <input type="password" class="form-control" formControlName="password" id="exampleInputEmail1"
-                aria-describedby="emailHelp" required>
+            <input [type]="changetype?'password':'text'" class="form-control" formControlName="password"
+                id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <span class="eyeicon" (click)="viewpass()">
+                <i [ngClass]="visible?'fa fa-eye':'fa fa-eye-slash'"></i>
+
+            </span>
         </div>
-       
-    
+
+
 
 
         <button type="submit" class="btn btn-primary">Submit</button>

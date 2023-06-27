@@ -22,11 +22,15 @@ export class AddUserComponent implements OnInit {
       password: new FormControl(''),
     })
   }
+  visible:boolean=true;
+  changetype:boolean=true;
+  viewpass(){
+    this.visible=!this.visible
+    this.changetype=!this.changetype
+  }
   onFileSelection(event: any) {
     this.selectedImg = event.target.files[0]
     console.log("Selected Image:", this.selectedImg);
-
-
   }
   submitData() {
     // alert("Submitted Successfully");
