@@ -10,13 +10,15 @@ import { UserService } from './Service/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './Components/login/login.component';
 import { EditComponent } from './Components/edit/edit.component';
+import { ProfileComponent } from './Components/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
     AddUserComponent,
     ViewUserComponent,
     LoginComponent,
-    EditComponent
+    EditComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

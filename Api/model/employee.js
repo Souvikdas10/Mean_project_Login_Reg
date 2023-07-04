@@ -22,7 +22,6 @@ const employeeSchema = new Schema({
         type: String,
         required: true
     }
-
 },{timestamps:true})
 
 const employeemodel = new mongoose.model('employee', employeeSchema)

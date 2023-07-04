@@ -12,6 +12,7 @@ app.use(cors());
 app.use(express.urlencoded({extended:true}))
 app.use(body_parser.urlencoded({ extended: true }))
 app.use(body_parser.json())
+
 app.use('/upload',express.static(path.join(__dirname,'upload')))
 const fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
