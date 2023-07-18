@@ -1,1 +1,27 @@
-<p>profile works!</p>
+<div class="container py-5">
+    <h1>Profile Details</h1>
+    
+    <div class="card bg-light text-light mb-3" style="max-width:1200px">
+        <!-- <ng-container *ngFor="let x of userDetails"> -->
+        <div class="col-md-4">
+            <img [src]="img_path" class="rounded-circle" width="100%" alt="profile image">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <div class="card-header bg-light text-success">
+                    <b>User Id: {{userDetails?._id}}</b>
+                    <br>
+                    <h5 class="card-title">{{userDetails?.name}} </h5>
+                    <h5 class="card-title">{{userDetails?.phone}} </h5>
+                    <p class="card-text"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus molestiae amet,
+                        dolorum quasi laudantium labore cupiditate at? Modi, temporibus expedita? Quisquam eos
+                        perspiciatis eligendi iusto, sequi cupiditate praesentium eaque animi. </p>
+                    <p class="card-text"><strong>Mail at: {{userDetails?.email}}</strong></p>
+
+                    <!-- <button (click)="loggingOut()" class="btn btn-success"> Logged out</button> -->
+                </div>
+            </div>
+        </div>
+    <!-- </ng-container> -->
+    </div>
+</div>

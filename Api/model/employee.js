@@ -21,7 +21,11 @@ const employeeSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    // token: {
+    //     type: String,
+    //     default:''
+    // }
 },{timestamps:true})
 
 const employeemodel = new mongoose.model('employee', employeeSchema)

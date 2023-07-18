@@ -3,7 +3,41 @@ const path = require('path')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const config = require('../config/config');
+const nodemailer = require("nodemailer");
+const randomstring = require("randomstring");
 const { log } = require('console');
+
+//----------------------------------------Mail sending----------------------------------
+
+// const sendResetPassword = async (name, email, token) => {
+//     try {
+//         const transpoter = nodemailer.createTransport({
+//             host: 'smtp.gmail.com',
+//             port: 587,
+//             secure: false,
+//             requireTLS: true,
+//             auth: {
+//                 user: "biswasankur712@gmail.com",
+//                 pass: "lndqlghrgnyinyky",
+//             }
+//         });
+//         const mailOptions = {
+//             from: 'biswasankur712@gmail.com',
+//             to: email,
+//             subject: 'For reset password',
+//             html: '<p>hii ' + name + ',please copy the link and <a href="http://localhost:7852/reset-password?token=' + token + '"> reset your password'
+//         };
+//         transpoter.sendMail(mailOptions, function (error, info) {
+//             if (error) {
+//                 console.log('error Occured');
+//             } else {
+//                 console.log("Email sent successfully");
+//             }
+//         })
+//     } catch (error) {
+//         res.status(400).json({ success: false, msg: ErrorEvent.message });
+//     }
+// }
 //----------------------------------------Registation----------------------------------
 
 const SecurePassword = async (password) => {
@@ -51,7 +85,6 @@ const addemp = async (req, res) => {
                 message: "register successfully",
                 data: user_data,
                 "token": token
-
             });
         }
     } catch (error) {
@@ -107,7 +140,7 @@ const logemp = async (req, res) => {
 
         if (users && (await bcrypt.compare(password, users.password))) {
             const token = await CreateToken(users._id)
-            return res.status(200).json({ success: true, msg:"Login....", "user": users, status: 200,  token: token });
+            return res.status(200).json({ success: true, msg: "Login....", "user": users, status: 200, token: token });
         }
         return res.status(201).json({ success: false, message: "Invalid Credentials" });
 
@@ -222,8 +255,9 @@ const deleteemp = async (req, res) => {
 
 const profile = async (req, res) => {
     try {
-        const pro = await employee.findById(req.user.id)
-        data= req.user
+        // console.log(req.params.id);
+        const pro = await employee.findById(req.params.id)
+        console.log(pro);
         return res.status(200).json({ success: true, msg: "profile Find successfully", data: pro })
     } catch (error) {
         console.log(error);
@@ -231,12 +265,27 @@ const profile = async (req, res) => {
     }
 }
 
-// app.get('/profile', authenticateToken, (req, res) => {
-//     // Access the authenticated user's information
-//     const user = req.user;
-//     res.json(user);
-//   });
+//==================================== Forget-Password ============================================================
 
+
+// const forget_password = async (req, res) => {
+//     try {
+//         const email=req.body.email;
+//         const userData = await UserModel.findOne({ email: req.body.email });
+//         if (userData) {
+//             const randomString = randomstring.generate();
+//             const data = await user.updateOne({ email: email }, { $set: { token: randomString } })
+//             sendResetPassword(userData.name, userData.email, randomstring);
+//             res.status(200).json({ success: true, msg: "pleace ckeck your email" })
+//         } else {
+//             res.status(200).json({ success: true, msg: "this email don not exist" })
+//         }
+//     } catch (error) {
+//         console.log(error);
+//         res.status(400).json({ success: false, msg: error.message })
+
+//     }
+// }
 module.exports = {
     addemp,
     logemp,
@@ -245,5 +294,6 @@ module.exports = {
     edit,
     updateemp,
     deleteemp,
-    profile
+    profile,
+    // forget_password
 }

@@ -43,7 +43,7 @@ loginUser(formData:any):Observable<User[]>{
 
 
   user_profile(): Observable<User[]> {
-    return this.http.get<User[]>(this.profile_api, {
+    return this.http.get<User[]>(this.User_get_api, {
       headers: new HttpHeaders({
         'x-access-token': `${this.auth.getToken()}`
       })

@@ -17,7 +17,9 @@ route.put('/updateemp/:id', controller.updateemp)
 
 route.delete('/deleteemp/:id', controller.deleteemp)
 
-route.get('/profile',controller.profile)
+route.get('/profile/:id',controller.profile)
+
+// route.post('forget-password',controller.forget_password)
 
 
 module.exports = route;
